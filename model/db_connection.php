@@ -1,6 +1,6 @@
 <?php
 global $db;
-$dsn = 'mysql:host=localhost;dbname=zippyusedautos';
+$dsn = 'mysql:host=g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=tcbvo63ef7tkc7sw';
 $username = 'root';
 $password = 'sesame';
 
