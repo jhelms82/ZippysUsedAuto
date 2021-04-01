@@ -43,24 +43,83 @@ $data = $smt->fetchAll();
 
 
 
+
+
 <?php
 
-$sql = "SELECT makeName FROM make";
+$sql = "SELECT typeName FROM type";
 $stmt = $db->prepare($sql);
 $stmt->execute();
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($stmt->rowCount() > 0) { ?>
-    <select name="makeName">
-        <option>View All Makes</option>
+    <select name="modelName">
+        <option>View All Types</option>
         <?php foreach ($results as $row) { ?>
 
-            <option value="<?php echo $row['makeName']; ?>"><?php echo $row['makeName']; ?></option>
+            <option value="<?php echo $row['typeName']; ?>"><?php echo $row['typeName']; ?></option>
         <?php } ?>
     </select>
 <?php } ?><br><br>
 
+
+<select name="className" id="className">
+    <option>View All Classes</option>
+    <?php foreach ($data as $row): ?>
+        <option><?=$row["className"]?></option>
+    <?php endforeach ?>
+</select>
+
+
+
+
+
+
+<?php
+$query = $db->prepare("SELECT * FROM vehicle ORDER BY vehiclePrice");
+$query->execute();
+$result = $query->fetchall();
+?>
+
+
+
+<?php
+
+echo
+"<table border='2' class='table-primary'>
+    <tr>
+    <th>Year</th>
+    <th>Make</th>
+    <th>Model</th>
+    <th>Type</th>
+    <th>Class</th>
+    <th>Price</th>
+
+
+    </tr>"
+
+?>
+
+
+
+
+<?php $vehicles = get_vehicles ();
+
+foreach ($vehicles as $vehicle) : ?>
+    <tr>
+        <td><?php echo $vehicle['vehicleYear']; ?></td>
+        <td><?php echo $vehicle['makeName']; ?></td>
+        <td><?php echo $vehicle['vehicleModel']; ?></td>
+        <td><?php echo $vehicle['typeName']; ?></td>
+        <td><?php echo $vehicle['className']; ?></td>
+
+
+        <td class="right"><?php echo $vehicle['vehiclePrice']; ?></td>
+
+    </tr>
+<?php endforeach; ?>
+</table>
 
 
 
