@@ -1,5 +1,9 @@
 <main>
 
+    <?php
+    include('../model/db_connection.php');
+    ?>
+
 
     <h1>Add Vehicle</h1>
     <form action="add_vehicles.php" method="post" id="add_vehicle_form">
@@ -26,7 +30,7 @@
         <?php } ?><br><br>
 
         <?php
-        $pdo = new PDO('mysql:host=localhost;dbname=zippyusedautos', 'root', 'sesame');
+
         $sql = "SELECT typeName FROM type";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();

@@ -3,7 +3,7 @@
 <!-- the head section -->
 
 <head>
-    <title>My Todo List</title>
+    <title>Zippy Used Autos</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 

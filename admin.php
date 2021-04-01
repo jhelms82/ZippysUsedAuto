@@ -133,7 +133,7 @@ foreach ($vehicles as $vehicle) : ?>
 
 
         <td class="right"><?php echo $vehicle['vehiclePrice']; ?></td>
-        <td><form action="delete.php" method="post">
+        <td><form action="view/delete.php" method="post">
                 <input type="hidden" name="vehicleID"
                        value="<?php echo $vehicle['vehicleID']; ?>">
                 <input type="hidden" name="vehicleID"
@@ -147,10 +147,10 @@ foreach ($vehicles as $vehicle) : ?>
 
 
 
-<p><a href="admin_vehicle.php">Click Here To Add Vehicle</a></p>
-<p><a href="admin_make.php">View/Edit Makes</a></p>
-<p><a href="admin_type.php">View/Edit Types</a></p>
-<p><a href="admin_class.php">View/Edit Classes</a></p> ?>
+<p><a href="view/admin_vehicle.php">Click Here To Add Vehicle</a></p>
+<p><a href="view/admin_make.php">View/Edit Makes</a></p>
+<p><a href="view/admin_type.php">View/Edit Types</a></p>
+<p><a href="view/admin_class.php">View/Edit Classes</a></p> ?>
 
 <?php
 include'view/footer.php';

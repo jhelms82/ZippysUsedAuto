@@ -3,7 +3,7 @@
 function get_vehicles()
 {
     global $db;
-    $query = 'SELECT * FROM vehicle
+    $query = 'SELECT * FROM vehicle ORDER BY vehiclePrice
                ';
     $statement = $db->prepare($query);
     $statement->execute();
@@ -11,16 +11,18 @@ function get_vehicles()
     $statement->closeCursor();
     return $vehicles;
 }
-function add_vehicle($types, $makes, $classes, $price)
+function add_vehicle($vehicleID, $typeName, $makeName, $className, $vehiclePrice, $vehicleModel)
 {
     global $db;
     $query = "INSERT INTO vehicle 
-    (makeName, vehicleID,  ) VALUES (:makename, :makeID)";
+    (makeName, vehicleID, typeName, className, vehiclePrice, vehiclePrice ) VALUES (:makeName, :vehicleID, :typeName, :className, :vehiclePrice, :vehiclePrice )";
     $statement = $db->prepare ($query);
-    $statement->bindValue ($makesName, ':makeName');
-    $statement->bindValue ($makesID, ':makeID');
-    $statement->bindValue ($makesName, ':makeName');
-    $statement->bindValue ($makesID, ':makeID');
+    $statement->bindValue ($makeName, ':makeName');
+    $statement->bindValue ($vehicleID, ':vehicleID');
+    $statement->bindValue ($typeName, ':typeName');
+    $statement->bindValue ($className, ':className');
+    $statement->bindValue ($vehiclePrice, ':vehiclePrice');
+    $statement->bindValue ($vehicleModel, ':vehiclePrice');
     $statement->execute ();
     $statement->closeCursor ();
 }
@@ -56,11 +58,12 @@ function get_vehicles_by_price($vehiclesPrice)
 function get_vehicles_by_year($vehicleYear) {
     global $db;
     $query='SELECT * FROM vehicle
-           WHERE vehiclePrice= :get_vehicles_by_price 
+           WHERE vehiclePrice= :vehiclePrice
             ORDER by vehiclePrice';
     $statement = $db->prepare($query);
     $statement->bind(':vehicleYear', $vehicleYear);
     $statement->execute();
+    return $vehicleYear;
 
 
 }
