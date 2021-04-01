@@ -12,38 +12,28 @@ $types = filter_input (INPUT_POST, 'typeID');
 
 
 ?>
+
+
+
+
+
 <?php
 
+$sql = "SELECT makeName FROM make";
+$stmt = $db->prepare($sql);
+$stmt->execute();
 
-$smt = $db->prepare('select makeName From make');
-$smt->execute();
-$data = $smt->fetchAll();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-?>
-<?php
+if ($stmt->rowCount() > 0) { ?>
+    <select name="makeName">
+        <option>View All Makes</option>
+        <?php foreach ($results as $row) { ?>
 
-
-$smt = $db->prepare('select typeName From type');
-$smt->execute();
-$data = $smt->fetchAll();
-
-?>
-<?php
-
-
-$smt = $db->prepare('select className From class');
-$smt->execute();
-$data = $smt->fetchAll();
-
-?>
-<header class="list_row list_header">
-    <h1>Vehicle List</h1>
-</header>
-
-
-
-
-
+            <option value="<?php echo $row['makeName']; ?>"><?php echo $row['makeName']; ?></option>
+        <?php } ?>
+    </select>
+<?php } ?><br><br>
 
 <?php
 
