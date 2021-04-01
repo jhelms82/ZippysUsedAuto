@@ -6,26 +6,26 @@ include ('model/types_db.php');
 include ('model/vehicle_make_db.php');
 include ('model/vehicles_db.php');
 
-// $vehicleID =  filter_input (INPUT_POST, 'vehicleID');
-// $classID = filter_input (INPUT_POST, 'classID');
-// $types = filter_input (INPUT_POST, 'typeID');
+$vehicleID =  filter_input (INPUT_POST, 'vehicleID');
+$classID = filter_input (INPUT_POST, 'classID');
+$types = filter_input (INPUT_POST, 'typeID');
 
 
 ?>
 <?php
 
 
-$smt = $db->prepare('select makeName From make');
-$smt->execute();
-$data = $smt->fetchAll();
+// $smt = $db->prepare('select makeName From make');
+// $smt->execute();
+// $data = $smt->fetchAll();
 
 ?>
 <?php
 
 
-$smt = $db->prepare('select typeName From type');
-$smt->execute();
-$data = $smt->fetchAll();
+// $smt = $db->prepare('select typeName From type');
+// $smt->execute();
+// $data = $smt->fetchAll();
 
 ?>
 <?php
