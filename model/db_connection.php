@@ -1,8 +1,8 @@
 <?php
 //local development server connection
 // $dsn = 'mysql:host=localhost;dbname=zippyusedautos';
-//$username = 'root';
-//$password = 'sesame';
+// $username = 'root';
+// $password = 'sesame';
 
 // Heroku connection
 $dsn = 'mysql:host=g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=tcbvo63ef7tkc7sw';
@@ -10,7 +10,7 @@ $username = 'vlbfph5v7vzcbm45';
 $password = 'ijfdttxcn0ffz3q8';
 
 
-$db = new PDO($dsn, $username, $password);
+// $db = new PDO($dsn, $username, $password);
 
 
 
