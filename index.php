@@ -1,10 +1,6 @@
 <?php
 require('model/db_connection.php');
-include('model/makes_db.php');
-include('model/classes_db.php');
-include ('model/types_db.php');
-include ('model/vehicle_make_db.php');
-include ('model/vehicles_db.php');
+
 
 $vehicleID =  filter_input (INPUT_POST, 'vehicleID');
 $classID = filter_input (INPUT_POST, 'classID');
@@ -93,9 +89,9 @@ if ($stmt->rowCount() > 0) { ?>
 
 
 <?php
-// $query = $db->prepare("SELECT * FROM vehicle ORDER BY vehiclePrice");
-// $query->execute();
-// $result = $query->fetchall();
+$query = $db->prepare("SELECT * FROM vehicle ORDER BY vehiclePrice");
+$query->execute();
+$result = $query->fetchall();
 
 
 ?>
