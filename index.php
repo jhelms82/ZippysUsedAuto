@@ -6,17 +6,96 @@ include ('model/types_db.php');
 include ('model/vehicle_make_db.php');
 include ('model/vehicles_db.php');
 
+$vehicleID =  filter_input (INPUT_POST, 'vehicleID');
+$classID = filter_input (INPUT_POST, 'classID');
+$types = filter_input (INPUT_POST, 'typeID');
+
+
+?>
+<?php
+
+
+$smt = $db->prepare('select makeName From make');
+$smt->execute();
+$data = $smt->fetchAll();
+
+?>
+<?php
+
+
+$smt = $db->prepare('select typeName From type');
+$smt->execute();
+$data = $smt->fetchAll();
+
+?>
+<?php
+
+
+$smt = $db->prepare('select className From class');
+$smt->execute();
+$data = $smt->fetchAll();
+
+?>
+<header class="list_row list_header">
+    <h1>Vehicle List</h1>
+</header>
+
+
+
+
+<?php
+
+$sql = "SELECT makeName FROM make";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($stmt->rowCount() > 0) { ?>
+    <select name="makeName">
+        <option>View All Makes</option>
+        <?php foreach ($results as $row) { ?>
+
+            <option value="<?php echo $row['makeName']; ?>"><?php echo $row['makeName']; ?></option>
+        <?php } ?>
+    </select>
+<?php } ?><br><br>
+
+<?php
+
+$sql = "SELECT typeName FROM type";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($stmt->rowCount() > 0) { ?>
+    <select name="modelName">
+        <option>View All Types</option>
+        <?php foreach ($results as $row) { ?>
+
+            <option value="<?php echo $row['typeName']; ?>"><?php echo $row['typeName']; ?></option>
+        <?php } ?>
+    </select>
+<?php } ?><br><br>
+
+
+<select name="className" id="className">
+    <option>View All Classes</option>
+    <?php foreach ($data as $row): ?>
+        <option><?=$row["className"]?></option>
+    <?php endforeach ?>
+</select>
 
 
 
 
 
 
-
-
-$query = $db->prepare("SELECT * FROM vehicle ORDER BY vehiclePrice");
-$query->execute();
-$result = $query->fetchall();
+<?php
+// $query = $db->prepare("SELECT * FROM vehicle ORDER BY vehiclePrice");
+// $query->execute();
+// $result = $query->fetchall();
 
 
 ?>
