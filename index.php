@@ -55,15 +55,15 @@ $smt->execute();
 $data = $smt->fetchAll();
 
 ?>
-<!-- <header class="list_row list_header">
+<header class="list_row list_header">
     <h1>Vehicle List</h1>
-</header> -->
+</header>
 <?php
 
 
-$smt = $db->prepare('select className From class');
-$smt->execute();
-$data = $smt->fetchAll();
+// $smt = $db->prepare('select className From class');
+// $smt->execute();
+// $data = $smt->fetchAll();
 
 ?>
 <header class="list_row list_header">
