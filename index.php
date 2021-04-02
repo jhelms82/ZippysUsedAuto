@@ -23,9 +23,9 @@ $data = $smt->fetchAll();
 <?php
 
 
-// $smt = $db->prepare('select typeName From type');
-// $smt->execute();
-// $data = $smt->fetchAll();
+$smt = $db->prepare('select typeName From type');
+$smt->execute();
+$data = $smt->fetchAll();
 
 ?>
 <?php
@@ -39,9 +39,9 @@ $data = $smt->fetchAll();
 <?php
 
 
-$smt = $db->prepare('select typeName From type');
-$smt->execute();
-$data = $smt->fetchAll();
+// $smt = $db->prepare('select typeName From type');
+// $smt->execute();
+// $data = $smt->fetchAll();
 
 ?>
 <?php
