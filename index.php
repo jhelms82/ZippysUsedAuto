@@ -36,14 +36,7 @@ $smt->execute();
 $data = $smt->fetchAll();
 
 ?>
-<?php
 
-
-$smt = $db->prepare('select typeName From type');
-$smt->execute();
-$data = $smt->fetchAll();
-
-?>
 
 
 
