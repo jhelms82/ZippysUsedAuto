@@ -23,9 +23,9 @@ $types = filter_input (INPUT_POST, 'typeID');
 <?php
 
 
-// $smt = $db->prepare('select typeName From type');
-// $smt->execute();
-// $data = $smt->fetchAll();
+$smt = $db->prepare('select typeName From type');
+$smt->execute();
+$data = $smt->fetchAll();
 
 ?>
 
