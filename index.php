@@ -58,14 +58,7 @@ $data = $smt->fetchAll();
 <header class="list_row list_header">
     <h1>Vehicle List</h1>
 </header>
-<?php
 
-
-$smt = $db->prepare('select className From class');
-$smt->execute();
-$data = $smt->fetchAll();
-
-?>
 
 
 
