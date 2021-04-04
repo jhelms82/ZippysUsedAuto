@@ -1,6 +1,4 @@
-<?php
-include('../model/db_connection.php');
-?>
+
 
 <?php
 // Get the product data
@@ -18,18 +16,18 @@ $vehicleYear == null || $vehicleYear == false
 || $vehiclePrice == null || $typeName == null || $typeName == false
 || $className == null || $className == false || $makeName == null) {
     $error = "Invalid Vehicle data. Check all fields and try again.";
-    include('error.php');
+    include('../view/error.php');
 } else {
-    require_once ('../model/db_connection.php');
+    require_once ('model/db_connection.php');
 }
 
 
 if(isset($_POST['submit'])) {
-    $vehicleYear=$_POST['vehicleYear'];
-    $vehiclePrice=$_POST['vehiclePrice'];
-    $typeName=$_POST['typeName'];
-    $makeName=$_POST['makeName'];
-    $vehicleModel=$_POST['vehicleModel'];
+    $vehicleYear=$_POST['year'];
+    $vehiclePrice=$_POST['price'];
+    $typeName=$_POST['Type'];
+    $makeName=$_POST['Make'];
+    $vehicleModel=$_POST['model'];
 
 }
 $vehicleYear= 1;
@@ -39,23 +37,9 @@ $makeName=1;
 $vehicleModel = 1;
 
 // Add the product to the database
-$query = 'INSERT INTO vehicle
-                 (vehicleID, vehicleYear, vehicleModel, vehiclePrice, typeName, className, makeName)
-              VALUES
-                 (:vehicleID, :vehicleYear, :vehicleModel, :vehiclePrice, :typeName, :className, :makeName)';
-
-$statement = $db->prepare($query);
-$statement->bindValue(':vehicleID', $vehicleID);
-$statement->bindValue(':vehicleYear', $vehicleYear);
-$statement->bindValue(':vehicleModel', $vehicleModel);
-$statement->bindValue(':vehiclePrice', $vehiclePrice);
-$statement->bindValue(':typeName', $typeName);
-$statement->bindValue(':className', $className);
-$statement->bindValue(':makeName', $makeName);
-$statement->execute();
-$statement->closeCursor();
+// add_vehicle($make_id, $type_id, $class_id, $year, $model, $price);
 
 // Display the Product List page
-include('../admin.php');
+require('../index.php');
 
 ?>

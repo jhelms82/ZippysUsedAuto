@@ -1,13 +1,12 @@
 <?php
-include 'db_connection.php';
+
 
 
 
 function get_classes()
 {
     global $db;
-    $query = 'SELECT * FROM class
-               ';
+$query = 'SELECT * FROM classes ORDER BY ID';
     $statement = $db->prepare($query);
     $statement->execute();
     $classes= $statement->fetchAll();
@@ -16,40 +15,34 @@ function get_classes()
 }
 
 
-function get_classes_by_name($classID) {
-    if(!$classID) {
-        return "All Types";
+    function get_class_name($class_id) {
+        global $db;
+        $query = 'SELECT * FROM classes WHERE ID = :class_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':class_id', $class_id);
+        $statement->execute();
+        $class = $statement->fetch();
+        $statement->closeCursor();
+        $class_name = $class['Class'];
+        return $class_name;
     }
-    global $db;
-    $query = "SELECT * FROM class
-    WHERE classID = :class_id";
-    $statement = $db->prepare ($query);
-    $statement->bindValue ($classID, ':class_id');
-    $statement->execute ();
-    $class = $statement->fetch();
-    $statement->closeCursor ();
-    $className = $class['classsName'];
-    return $className;
-}
 
-function add_class($className, $classID)
-{
-    global $db;
-    $query = "INSERT INTO class 
-    (className, classID) VALUES (:className, :class_id)";
-    $statement = $db->prepare ($query);
-    $statement->bindValue ($className, ':className');
-    $statement->bindValue ($classID, ':class_id');
-    $statement->execute ();
-    $statement->closeCursor ();
-}
+    function add_class($class_name) {
+        global $db;
+        $query = 'INSERT INTO classes (Class)
+              VALUES
+                 (:className)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':className', $class_name);
+        $statement->execute();
+        $statement->closeCursor();
+    }
 
-function delete_class($classID) {
-    global $db;
-    $query = "DELETE FROM class
-    WHERE classID = : class_id";
-    $statement = $db->prepare ($query);
-    $statement->bindValue (":class_id", $classID);
-    $statement->execute ();
-    $statement->closeCursor ();
-}
+    function delete_class($class_id) {
+        global $db;
+        $query = 'DELETE FROM classes WHERE ID = :class_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':class_id', $class_id);
+        $statement->execute();
+        $statement->closeCursor();
+    }

@@ -1,5 +1,5 @@
 <?php
-require "../model/db_connection.php";
+// require "model/db_connection.php";
 include "../model/classes_db.php";
 
 ?>

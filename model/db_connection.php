@@ -1,6 +1,6 @@
 <?php
 //local development server connection
-// $dsn = 'mysql:host=localhost;dbname=zippyusedautos';
+// $dsn = 'mysql:host=localhost;dbname=zippy';
 // $username = 'root';
 // $password = 'sesame';
 
